@@ -13,3 +13,11 @@ def solution(s):
         prev_ch = elem
 
     return answer
+
+
+
+'''
+채점 결과
+정확성: 100.0
+합계: 100.0 / 100.0
+'''
