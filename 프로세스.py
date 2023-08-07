@@ -9,6 +9,7 @@ answer = 2
 idx = 0
 '''
 
+'''
 def solution(priorities, location):
     answer = 1
     q = deque(priorities)
@@ -41,6 +42,37 @@ def solution(priorities, location):
                 idx -= 1
                 
     return answer
+'''
+
+
+# 스택/덱 - 덱 활용
+def solution(priorities, location):
+    
+    q = deque(priorities)
+    idx = location
+    answer = 1
+    
+    while len(q)>1:
+        temp = q.popleft()
+        if temp < max(q): # 덱 내 맥스값을 기준으로 항목들을 비교한다.
+            q.append(temp)
+            
+            # idx 위치 조정
+            if idx == 0:
+                idx = len(q)-1
+            else:
+                idx -= 1
+
+        else:
+            # 여기서 최종으로 리턴 
+            # [3, 3, 1, 2] 와 같이 최댓값이 중복될 때는 여기서 최종 리턴
+            if idx == 0:
+                return answer
+            else:
+                answer += 1 # answer는 2
+                idx -= 1 # idx는 0
+    
+    return answer 
 
 
 
